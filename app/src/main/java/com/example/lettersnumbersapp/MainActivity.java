@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
 ProgressBar pb;
 int counter = 0;
-
-
-    Timer t = new Timer();
-    private static int PERIOD = 1000;
+Timer t = new Timer();
+private static int PERIOD = 1000;
 
 
     @Override
@@ -55,11 +53,18 @@ int counter = 0;
 
 
 
+        TextView playerScore = (TextView) findViewById(R.id.Score);
+        viewModel.getPlayerScore().observe(this, score -> playerScore.setText(score.toString()));
+
+
+
+
 
 
         TextView player = (TextView) findViewById(R.id.player);
 
         viewModel.getPlayer().observe(this, playerNumber -> player.setText(playerNumber));
+
 
 
         ImageView taskImage = (ImageView) findViewById(R.id.imageTask);
@@ -124,7 +129,6 @@ int counter = 0;
 
 
 
-
         TextView roundOver = (TextView) findViewById(R.id.roundOver);
         pb = (ProgressBar)findViewById(R.id.progress_bar);
         Timer t = new Timer();
@@ -143,7 +147,7 @@ int counter = 0;
             }
         };
 
-        t.schedule(tt, 0 ,1000);
+        t.schedule(tt, 0 ,100);
 
 
 
@@ -165,11 +169,17 @@ int counter = 0;
 
     public void nextRound(View v) {
         viewModel.nextRound();
+        viewModel.setScore();
         counter = 0;
         TextView roundOver = (TextView) findViewById(R.id.roundOver);
         roundOver.setText(" ");
 
+
+
     }
+
+
+
 
     protected void onSaveInstanceState(Bundle outState) {
 
@@ -184,7 +194,8 @@ int counter = 0;
     }
 
 
+    public void player1Score(View view) {
+        viewModel.playerScore();
 
-
-
+    }
 }

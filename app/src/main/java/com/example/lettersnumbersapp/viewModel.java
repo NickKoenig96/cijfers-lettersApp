@@ -17,10 +17,7 @@ public class viewModel extends ViewModel {
     private MutableLiveData<String> player;
     private MutableLiveData<String> imageTask;
 
-    private MutableLiveData<Integer> counter;
-
-
-
+    private MutableLiveData<Integer> playerScore;
 
 
 
@@ -34,7 +31,11 @@ public class viewModel extends ViewModel {
     public  String Player = "Player1";
     public String Image = "";
     public int gameRound = 1;
-    int Counter;
+
+    public int Player1Score = 0;
+    public int Player2Score = 0;
+    public  int PlayerScore = 0;
+
 
 
 
@@ -82,19 +83,11 @@ public class viewModel extends ViewModel {
         return imageTask;
     }
 
+    public MutableLiveData<Integer>  getPlayerScore(){
+        playerScore = new MutableLiveData<Integer>(PlayerScore);
 
-    public MutableLiveData<Integer> getTimer(){
-        Counter++;
-        counter.setValue(Counter);
-        counter = new MutableLiveData<Integer>(Counter);
-        return counter;
-
+        return playerScore;
     }
-
-
-
-
-
 
 
 
@@ -152,22 +145,60 @@ public class viewModel extends ViewModel {
         }else{
             gameRound = 0;
         }
-
-
-
-
 }
 
+    public void setPlayerScore(){
+        if(Player == "Player1"){
+            PlayerScore = Player1Score;
+            playerScore.setValue(Player1Score);
 
+
+        }else{
+            PlayerScore = Player2Score;
+            playerScore.setValue(Player2Score);
+
+        }
+    }
+
+    public void setScore(){
+        if(Player == "Player1"){
+            PlayerScore = Player1Score;
+            playerScore.setValue(Player1Score);
+
+
+        }else{
+            PlayerScore = Player2Score;
+            playerScore.setValue(Player2Score);
+
+        }
+    }
+
+public void playerScore(){
+    if(Player == "Player1"){
+        PlayerScore = Player1Score;
+        Player1Score = Player1Score+10;
+        playerScore.setValue(Player1Score);
+
+
+    }else{
+        PlayerScore = Player2Score;
+        Player2Score = Player2Score+10;
+        playerScore.setValue(Player2Score);
+
+    }
+}
 
 public void player(){
         if(PLAYER_ROUND < 3){
             Player = "Player1";
             player.setValue(Player);
 
+
+
         }else{
             Player = "Player2";
             player.setValue(Player);
+
 
         }
 }
@@ -185,18 +216,13 @@ public void player(){
     }
 
 
-
-
     public void nextRound() {
         clearLetters();
        clearNumbers();
+
        playerRound();
         player();
         fitnessTask();
-
-
-
-
 
 //        currentRound.setValue(1 - currentRound.getValue());
 
