@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class viewModel extends ViewModel {
     private MutableLiveData<ArrayList<Character>> letters;
@@ -14,7 +16,9 @@ public class viewModel extends ViewModel {
     private MutableLiveData<Integer> PlayerRound;
     private MutableLiveData<String> player;
     private MutableLiveData<String> imageTask;
-    private MutableLiveData<Integer> timer;
+
+    private MutableLiveData<Integer> counter;
+
 
 
 
@@ -30,7 +34,7 @@ public class viewModel extends ViewModel {
     public  String Player = "Player1";
     public String Image = "";
     public int gameRound = 1;
-    public int Timer = 60;
+    int Counter;
 
 
 
@@ -77,6 +81,17 @@ public class viewModel extends ViewModel {
 
         return imageTask;
     }
+
+
+    public MutableLiveData<Integer> getTimer(){
+        Counter++;
+        counter.setValue(Counter);
+        counter = new MutableLiveData<Integer>(Counter);
+        return counter;
+
+    }
+
+
 
 
 

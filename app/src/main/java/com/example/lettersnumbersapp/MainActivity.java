@@ -31,6 +31,8 @@ ProgressBar pb;
 int counter = 0;
 
 
+    Timer t = new Timer();
+    private static int PERIOD = 1000;
 
 
     @Override
@@ -121,45 +123,37 @@ int counter = 0;
         });
 
 
-        prog();
+
+
+        TextView roundOver = (TextView) findViewById(R.id.roundOver);
+        pb = (ProgressBar)findViewById(R.id.progress_bar);
+        Timer t = new Timer();
+        TimerTask tt = new TimerTask() {
+            public void run() {
+                counter++;
+                pb.setProgress(counter);
+
+                if(counter == 120){
+                    // t.cancel();
+                    roundOver.setText("ROUND OVER");
+
+
+                }
+
+            }
+        };
+
+        t.schedule(tt, 0 ,1000);
+
+
 
     }
 
 
 
-public void prog(){
-    TextView roundOver = (TextView) findViewById(R.id.roundOver);
-
-
-    pb = (ProgressBar)findViewById(R.id.progress_bar);
-        Timer t = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run() {
-                counter++;
-                pb.setProgress(counter);
 
 
 
-
-                if(counter == 120){
-                   // t.cancel();
-
-                    roundOver.setText("ROUND OVER");
-
-                    pb.setProgress(counter);
-                }
-
-
-
-
-
-            }
-        };
-
-        t.schedule(tt, 0 ,100);
-
-};
 
 
 
@@ -174,6 +168,18 @@ public void prog(){
         counter = 0;
         TextView roundOver = (TextView) findViewById(R.id.roundOver);
         roundOver.setText(" ");
+
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+        outState.putInt("counter" , counter);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        counter = savedInstanceState.getInt("counter");
 
     }
 

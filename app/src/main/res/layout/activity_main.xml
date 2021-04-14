@@ -81,34 +81,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loser Task!"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
-
+        app:layout_constraintVertical_bias="0.953" />
 
     <TextView
         android:id="@+id/roundOver"
-        android:layout_width="414dp"
-        android:layout_height="733dp"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
         android:gravity="center"
         android:text=" "
         android:textColor="@color/purple_700"
         android:textSize="100sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/layout_a"
+        app:layout_constraintVertical_bias="0.545" />
 
     <ImageView
         android:id="@+id/imageTask"
