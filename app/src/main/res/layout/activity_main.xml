@@ -58,15 +58,14 @@
         style="@android:style/Widget.Holo.ProgressBar.Horizontal"
         android:layout_width="163dp"
         android:layout_height="16dp"
-        android:layout_marginStart="136dp"
         android:indeterminate="false"
         android:max="100"
         android:minWidth="200dp"
         android:progress="0"
-        android:background="#FF0000"
-        android:progressBackgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:progressBackgroundTint="@color/purple_700"
+        app:layout_constraintBottom_toTopOf="@+id/gridlayout"
+        app:layout_constraintEnd_toStartOf="@+id/Score"
+        app:layout_constraintStart_toEndOf="@+id/player"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.667" />
 
@@ -94,6 +93,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.779" />
+
+
+    <TextView
+        android:id="@+id/roundOver"
+        android:layout_width="414dp"
+        android:layout_height="733dp"
+        android:gravity="center"
+        android:text=" "
+        android:textColor="@color/purple_700"
+        android:textSize="100sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageTask"

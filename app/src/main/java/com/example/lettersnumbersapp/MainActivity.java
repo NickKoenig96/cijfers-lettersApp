@@ -32,10 +32,14 @@ int counter = 0;
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
 
 
@@ -45,8 +49,10 @@ int counter = 0;
 
 
         TextView test = (TextView) findViewById(R.id.test);
+            viewModel.getCurrentPlayerRound().observe(this, playerRound -> test.setText(playerRound.toString()));
 
-        viewModel.getCurrentPlayerRound().observe(this, playerRound -> test.setText(playerRound.toString()));
+
+
 
 
         TextView player = (TextView) findViewById(R.id.player);
@@ -120,8 +126,12 @@ int counter = 0;
     }
 
 
+
 public void prog(){
-        pb = (ProgressBar)findViewById(R.id.progress_bar);
+    TextView roundOver = (TextView) findViewById(R.id.roundOver);
+
+
+    pb = (ProgressBar)findViewById(R.id.progress_bar);
         Timer t = new Timer();
         TimerTask tt = new TimerTask() {
             @Override
@@ -129,9 +139,21 @@ public void prog(){
                 counter++;
                 pb.setProgress(counter);
 
-                if(counter == 100){
-                    t.cancel();;
+
+
+
+                if(counter == 120){
+                   // t.cancel();
+
+                    roundOver.setText("ROUND OVER");
+
+                    pb.setProgress(counter);
                 }
+
+
+
+
+
             }
         };
 
@@ -144,8 +166,15 @@ public void prog(){
 
 
 
+
+
+
     public void nextRound(View v) {
         viewModel.nextRound();
+        counter = 0;
+        TextView roundOver = (TextView) findViewById(R.id.roundOver);
+        roundOver.setText(" ");
+
     }
 
 
